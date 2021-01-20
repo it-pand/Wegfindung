@@ -1,7 +1,0 @@
-<<<<<<< Updated upstream
-Ich mag Paul! <3
-dom ist uncool
-=======
-dom ist uncool
-Ich mag Paul! <3
->>>>>>> Stashed changes
