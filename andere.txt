@@ -1,2 +1,11 @@
+<<<<<<< Updated upstream
 Ich mag Paul! <3
 dom ist uncool
+=======
+<<<<<<< HEAD
+Ich mag Paul! <3
+=======
+
+dom ist uncool
+>>>>>>> master
+>>>>>>> Stashed changes
