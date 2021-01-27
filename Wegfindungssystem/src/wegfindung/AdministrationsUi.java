@@ -6,38 +6,31 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
-public class AdministrationsUi extends JFrame {
-
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AdministrationsUi frame = new AdministrationsUi();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+public class AdministrationsUi {
+		
+		public static void main(String[] args) {
+			showWindow();
+			
+		}
+	
+	public static void showWindow() {
+		JFrame frame = new JFrame("AdministrationsUi");
+		frame.setBounds(0, 0, 1920, 1080);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		frame.setVisible(true);
+		
+		JLabel lbl_Test = new JLabel("Das ist ein Testlable");
+		lbl_Test.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl_Test.setFont(new Font("Calibri", Font.BOLD, 20));
+		lbl_Test.setBounds(305, 200, 207, 106);
+		frame.getContentPane().add(lbl_Test);
 	}
-
-	/**
-	 * Create the frame.
-	 */
-	public AdministrationsUi() {
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 1920, 1080);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-	}
-
+		
+		
 }
+

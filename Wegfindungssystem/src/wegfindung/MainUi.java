@@ -15,83 +15,64 @@ import javax.swing.JPanel;
 
 
 public class MainUi {
-
-	private JFrame frame;
-	private JTextField txt_login;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainUi window = new MainUi();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public MainUi() {
-		initialize();
-	}
-
 	
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setResizable(false);
+	public static void main(String[] args) {
+		showWindow();
+	}
+	
+	public static void showWindow() {
+		JFrame frame = new JFrame("MainUi");
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setVisible(true);
 		
+		JPanel loginPanel = new JPanel();
+		loginPanel.setVisible(false);
+		loginPanel.setBorder(new LineBorder(new Color(0, 0, 0), 5));
+		loginPanel.setBounds(340, 217, 268, 205);
+		frame.getContentPane().add(loginPanel);
+		loginPanel.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setVisible(false);
-		panel.setBounds(395, 115, 268, 210);
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
-		
-		txt_login = new JTextField();
-		txt_login.setBounds(91, 59, 86, 20);
-		panel.add(txt_login);
+		JTextField txt_login = new JTextField();
+		txt_login.setBounds(83, 62, 86, 20);
 		txt_login.setColumns(10);
+		loginPanel.add(txt_login);
 		
-		JButton Btn_bestaetigen = new JButton("Best\u00E4tigen");
-		Btn_bestaetigen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String password = txt_login.getText();
-				if (password.equals("Hallo")) {
-					panel.setVisible(false);		
+		
+		JButton btn_login = new JButton("login");
+		btn_login.setBounds(0, 0, 133, 77);
+		frame.getContentPane().add(btn_login);
+		btn_login.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				loginPanel.setVisible(true);
+	
+			}
+		});
+		
+		
+		JButton btn_bestaetigen = new JButton("Bestaetigen");
+		btn_bestaetigen.setBounds(83, 93, 89, 23);
+		loginPanel.add(btn_bestaetigen);
+		btn_bestaetigen.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				String Password = txt_login.getText();
+				
+				if(Password.equals("Bumsknecht")) {
+				txt_login.setText("");
+				frame.setVisible(false);
+				AdministrationsUi AuI = new AdministrationsUi();
+				AuI.showWindow();
 				} else {
-					JOptionPane.showMessageDialog(panel , "Falscher Pin", "Fehler", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(loginPanel, "Falscher Pin");
+					
 				}
 				
 			}
 		});
-		Btn_bestaetigen.setBounds(91, 90, 89, 23);
-		panel.add(Btn_bestaetigen);
 		
 		
-		JButton btn_login = new JButton("Login");
-		btn_login.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				panel.setVisible(true);
-				
-			}
-		});
-		btn_login.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		btn_login.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		btn_login.setBounds(10, 11, 98, 35);
-		frame.getContentPane().add(btn_login);
 	}
 }
