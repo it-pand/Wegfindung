@@ -1,42 +1,44 @@
 package wegfindung;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.Font;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
+import java.awt.Insets;
 
-public class MitarbeiterUi extends JFrame {
-
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+public class MitarbeiterUi {
+	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MitarbeiterUi frame = new MitarbeiterUi();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		initialize();
+		
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public MitarbeiterUi() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-	}
-
+public static void initialize() {
+	JFrame frame = new JFrame("MitarbeiterUi");
+	frame.setBounds(0, 0, 1920, 1080);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.getContentPane().setLayout(null);
+	frame.setVisible(true);
+	
+	JButton btn_back = new JButton("Zur\u00FCck");
+	btn_back.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			frame.setVisible(false);
+			MainUi MainUi = new MainUi();
+			MainUi.initialize();
+		}
+	});
+	btn_back.setBounds(10, 11, 89, 23);
+	frame.getContentPane().add(btn_back);
+}
 }

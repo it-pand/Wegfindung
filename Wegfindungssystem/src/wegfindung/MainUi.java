@@ -2,6 +2,7 @@ package wegfindung;
 
 import java.awt.EventQueue;
 
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -14,9 +15,11 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.Insets;
+import javax.swing.JPasswordField;
 
 
 public class MainUi {
+	private static JPasswordField pwf_login;
 	
 	public static void main(String[] args) {
 		initialize();
@@ -41,6 +44,11 @@ public class MainUi {
 		btn_Hilfe.setBounds(10, 72, 100, 50);
 		frame.getContentPane().add(btn_Hilfe);
 		
+		JButton btn_exit = new JButton("Exit");
+		btn_exit.setMargin(new Insets(10, 14, 2, 14));
+		btn_exit.setFont(new Font("Calibri", Font.BOLD, 28));
+		btn_exit.setBounds(10, 133, 100, 50);
+		frame.getContentPane().add(btn_exit);
 		
 		JPanel loginPanel = new JPanel();
 		loginPanel.setVisible(false);
@@ -54,11 +62,17 @@ public class MainUi {
 		btn_bestaetigen.setBounds(65, 90, 120, 40);
 		loginPanel.add(btn_bestaetigen);
 		
-		JTextField txt_login = new JTextField();
-		txt_login.setBounds(65, 40, 120, 25);
-		txt_login.setColumns(10);
-		loginPanel.add(txt_login);
+		pwf_login = new JPasswordField();
+		pwf_login.setBounds(65, 43, 120, 25);
+		loginPanel.add(pwf_login);
 		
+		
+		
+		btn_exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(1);
+			}
+		});
 		
 		btn_login.addActionListener(new ActionListener() {
 			
@@ -77,14 +91,19 @@ public class MainUi {
 		btn_bestaetigen.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				String Password = txt_login.getText();
+				String Password = pwf_login.getText();
 				
 				if(Password.equals("login")) {
-				txt_login.setText("");
+				pwf_login.setText("");
 				frame.setVisible(false);
 				AdministrationsUi AuI = new AdministrationsUi();
 				AuI.initialize();
-				} else {
+				}else if(Password.equals("login2")) {
+					pwf_login.setText("");
+					frame.setVisible(false);
+					MitarbeiterUi MuI = new MitarbeiterUi();
+					MuI.initialize();
+				}else {
 					JOptionPane.showMessageDialog(loginPanel, "Entweder wurde der Pin falsch eingetippt \noder dieser existiert nicht.", "Falscher Pin", JOptionPane.DEFAULT_OPTION);
 		
 				}
