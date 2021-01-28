@@ -18,6 +18,7 @@ import java.awt.Insets;
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
 
 
 public class MainUi {
@@ -64,8 +65,6 @@ public class MainUi {
 		btn_bestaetigen.setBounds(65, 90, 120, 40);
 		loginpanel.add(btn_bestaetigen);
 		
-		JButton btn_helpexit = new JButton("Zur\u00FCck");
-		
 		pwf_login = new JPasswordField();
 		pwf_login.setBounds(65, 43, 120, 25);
 		loginpanel.add(pwf_login);
@@ -76,13 +75,15 @@ public class MainUi {
 		spane_help.setVisible(false);
 		frame.getContentPane().add(spane_help);
 		
-		
+		JButton btn_helpexit = new JButton("Zur\u00FCck");
 		btn_helpexit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				spane_help.setVisible(false);
 			}
 		});
 		spane_help.setRowHeaderView(btn_helpexit);
+		
+		
 		
 		
 		
