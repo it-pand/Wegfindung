@@ -50,7 +50,7 @@ public class MainUi {
 		btn_login.setFont(new Font("Calibri", Font.BOLD, 28));
 		
 		JButton btn_help = new JButton("Hilfe");
-		btn_help.setBounds(10, 72, 100, 50);
+		btn_help.setBounds(178, 71, 100, 50);
 		btn_help.setMargin(new Insets(10, 14, 2, 14));
 		btn_help.setFont(new Font("Calibri", Font.BOLD, 28));
 		
