@@ -113,7 +113,6 @@ public class MainUi {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				String Password = pwf_login.getText();
-				
 				if(Password.equals("login")) {
 				pwf_login.setText("");
 				frame.setVisible(false);
