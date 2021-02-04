@@ -1,4 +1,4 @@
-package wegfindung;
+package Model;
 
 public class Pathfinding {
 

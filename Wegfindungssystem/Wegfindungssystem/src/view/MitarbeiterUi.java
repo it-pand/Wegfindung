@@ -1,4 +1,4 @@
-package wegfindung;
+package view;
 
 import java.awt.EventQueue;
 
@@ -19,11 +19,11 @@ import java.awt.Insets;
 public class MitarbeiterUi {
 	
 	public static void main(String[] args) {
-		initialize();
+		new MitarbeiterUi();
 		
 	}
 
-public static void initialize() {
+public MitarbeiterUi() {
 	JFrame frame = new JFrame("MitarbeiterUi");
 	frame.setBounds(0, 0, 1920, 1080);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,7 +35,6 @@ public static void initialize() {
 		public void actionPerformed(ActionEvent e) {
 			frame.setVisible(false);
 			MainUi MainUi = new MainUi();
-			MainUi.initialize();
 		}
 	});
 	btn_back.setBounds(10, 11, 89, 23);

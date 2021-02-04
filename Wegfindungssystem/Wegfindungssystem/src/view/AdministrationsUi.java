@@ -1,4 +1,4 @@
-package wegfindung;
+package view;
 
 import java.awt.EventQueue;
 
@@ -19,11 +19,10 @@ import java.awt.Insets;
 public class AdministrationsUi {
 		
 		public static void main(String[] args) {
-			initialize();
-			
+			new AdministrationsUi();
 		}
 	
-	public static void initialize() {
+	public AdministrationsUi() {
 		JFrame frame = new JFrame("AdministrationsUi");
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,9 +33,7 @@ public class AdministrationsUi {
 		btn_back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				MainUi MainUi = new MainUi();
-				MainUi.initialize();
-			}
+				MainUi MainUi = new MainUi();			}
 		});
 		btn_back.setBounds(122, 76, 89, 23);
 		frame.getContentPane().add(btn_back);
