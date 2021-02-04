@@ -77,12 +77,10 @@ public class MainUi {
 	
 	public MainUi() {
 		
-		
 		frame = new JFrame("MainUi");
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		
 		
 		btn_login = new JButton("Login");
 		btn_login.setBounds(10, 11, 100, 50);
