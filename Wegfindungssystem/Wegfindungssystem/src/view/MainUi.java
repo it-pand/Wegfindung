@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import java.awt.Insets;
+import java.awt.Point;
+
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
@@ -32,12 +34,13 @@ import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import javax.swing.JInternalFrame;
 import java.awt.Rectangle;
+import javax.swing.ImageIcon;
 
 
 public class MainUi {
 	public static JFrame frame;
 	public static JPasswordField pwf_login;
-	public static JTextField textField;
+	public static JTextField txt_searchfield;
 	public static JButton btn_login;
 	public static JButton btn_help;
 	public static JButton btn_exit;
@@ -51,7 +54,6 @@ public class MainUi {
 	public static JPanel panel_1;
 	public static JLabel lbl_helptext;
 	public static JPanel panel_2;
-	public static JLabel lbl_search;
 	public static JButton keypad_0;
 	public static JButton keypad_1;
 	public static JButton keypad_2;
@@ -64,6 +66,9 @@ public class MainUi {
 	public static JButton keypad_9;
 	public static JButton keypad_enter;
 	public static JButton keypad_delete;
+	public static JButton btn_searchfunction;
+	
+	
 	public static String passwordinput = "";
 	
 	public static void main(String[] args) {
@@ -71,6 +76,8 @@ public class MainUi {
 	}
 	
 	public MainUi() {
+		
+		
 		frame = new JFrame("MainUi");
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,23 +90,23 @@ public class MainUi {
 		btn_login.setFont(new Font("Calibri", Font.BOLD, 28));
 		
 		btn_help = new JButton("Hilfe");
-		btn_help.setBounds(10, 72, 100, 50);
+		btn_help.setBounds(120, 10, 100, 50);
 		btn_help.setMargin(new Insets(10, 14, 2, 14));
 		btn_help.setFont(new Font("Calibri", Font.BOLD, 28));
 		
 		btn_exit = new JButton("Exit");
-		btn_exit.setBounds(10, 133, 100, 50);
+		btn_exit.setBounds(230, 10, 100, 50);
 		btn_exit.setMargin(new Insets(10, 14, 2, 14));
 		btn_exit.setFont(new Font("Calibri", Font.BOLD, 28));
 		
 		loginpanel = new JPanel();
-		loginpanel.setBounds(829, 228, 359, 390);
+		loginpanel.setBounds(1535, 11, 359, 390);
 		loginpanel.setVisible(false);
 		loginpanel.setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		loginpanel.setLayout(null);
 		
 		spane_help = new JScrollPane();
-		spane_help.setBounds(339, 110, 330, 241);
+		spane_help.setBounds(1564, 412, 330, 241);
 		spane_help.setBorder(new LineBorder(new Color(130, 135, 144), 5));
 		
 		frame.getContentPane().setLayout(null);
@@ -193,19 +200,20 @@ public class MainUi {
 		
 		lbl_helptext = new JLabel("New label");
 		lbl_helptext.setBounds(10, 11, 189, 189);
+		lbl_helptext.setText("Hallo");
 		panel_1.add(lbl_helptext);
 		
 		panel_2 = new JPanel();
 		spane_help.setColumnHeaderView(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		lbl_search = new JLabel("Suche:");
-		lbl_search.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(lbl_search);
+		btn_searchfunction = new JButton("Suche");
+		panel_2.add(btn_searchfunction);
 		
-		textField = new JTextField();
-		panel_2.add(textField);
-		textField.setColumns(10);
+		txt_searchfield = new JTextField();
+		panel_2.add(txt_searchfield);
+		txt_searchfield.setColumns(10);
+		
 		
 		spane_help.setVisible(false);
 		
@@ -213,6 +221,17 @@ public class MainUi {
 	}
 	
 	public static void createEvents() {
+		
+		btn_searchfunction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text = lbl_helptext.getText();
+				String search = txt_searchfield.getText();
+				
+				if(text.contains(search)) {
+					System.out.println("Geht");
+				}
+			}
+		});
 		
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
