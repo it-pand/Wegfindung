@@ -47,13 +47,13 @@ public class MainUi {
 	public static JPanel loginpanel;
 	public static JButton btn_bestaetigen;
 	public static JScrollPane spane_help;
-	public static JPanel panel;
-	public static JButton btn_help2;
-	public static JButton btn_help1;
+	public static JPanel helpbuttonspanel;
+	public static JButton btn_Symbolerklärung;
+	public static JButton btn_Funktionsweise;
 	public static JButton btn_back;
-	public static JPanel panel_1;
+	public static JPanel helptextpanel;
 	public static JLabel lbl_helptext;
-	public static JPanel panel_2;
+	public static JPanel searchpanel;
 	public static JButton keypad_0;
 	public static JButton keypad_1;
 	public static JButton keypad_2;
@@ -67,9 +67,10 @@ public class MainUi {
 	public static JButton keypad_enter;
 	public static JButton keypad_delete;
 	public static JButton btn_searchfunction;
-	
+	public static JLabel lbl_map;
 	
 	public static String passwordinput = "";
+	
 	
 	public static void main(String[] args) {
 		new MainUi();
@@ -97,6 +98,9 @@ public class MainUi {
 		btn_exit.setMargin(new Insets(10, 14, 2, 14));
 		btn_exit.setFont(new Font("Calibri", Font.BOLD, 28));
 		
+		lbl_map = new JLabel("");
+		lbl_map.setBounds(10, 72, 907, 657);
+		
 		loginpanel = new JPanel();
 		loginpanel.setBounds(1535, 11, 359, 390);
 		loginpanel.setVisible(false);
@@ -111,10 +115,12 @@ public class MainUi {
 		frame.getContentPane().add(btn_login);
 		frame.getContentPane().add(btn_help);
 		frame.getContentPane().add(btn_exit);
+		frame.getContentPane().add(lbl_map);
 		frame.getContentPane().add(loginpanel);
 		frame.getContentPane().add(spane_help);
 		
-		keypad_enter = new JButton("Enter");
+		keypad_enter = new JButton("ENTER");
+		keypad_enter.setActionCommand("");
 		keypad_enter.setFont(new Font("Tahoma", Font.BOLD, 14));
 		keypad_enter.setBounds(219, 289, 60, 60);
 		loginpanel.add(keypad_enter);
@@ -179,42 +185,41 @@ public class MainUi {
 		loginpanel.add(pwf_login);
 		pwf_login.setText("");
 		
-		panel = new JPanel();
-		spane_help.setRowHeaderView(panel);
-		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		helpbuttonspanel = new JPanel();
+		spane_help.setRowHeaderView(helpbuttonspanel);
+		helpbuttonspanel.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		btn_help1 = new JButton("Funktionsweise");
-		panel.add(btn_help1);
+		btn_Funktionsweise = new JButton("Funktionsweise");
+		helpbuttonspanel.add(btn_Funktionsweise);
 		
-		btn_help2 = new JButton("Symbolerkl\u00E4rung");
-		panel.add(btn_help2);
+		btn_Symbolerklärung = new JButton("Symbolerkl\u00E4rung");
+		helpbuttonspanel.add(btn_Symbolerklärung);
 		
 		btn_back = new JButton("Zur\u00FCck");		
-		panel.add(btn_back);
+		helpbuttonspanel.add(btn_back);
 		
-		panel_1 = new JPanel();
-		spane_help.setViewportView(panel_1);
-		panel_1.setLayout(null);
+		helptextpanel = new JPanel();
+		spane_help.setViewportView(helptextpanel);
+		helptextpanel.setLayout(null);
 		
 		lbl_helptext = new JLabel("New label");
 		lbl_helptext.setBounds(10, 11, 189, 189);
 		lbl_helptext.setText("Hallo");
-		panel_1.add(lbl_helptext);
+		helptextpanel.add(lbl_helptext);
 		
-		panel_2 = new JPanel();
-		spane_help.setColumnHeaderView(panel_2);
-		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		searchpanel = new JPanel();
+		spane_help.setColumnHeaderView(searchpanel);
+		searchpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		btn_searchfunction = new JButton("Suche");
-		panel_2.add(btn_searchfunction);
+		searchpanel.add(btn_searchfunction);
 		
 		txt_searchfield = new JTextField();
-		panel_2.add(txt_searchfield);
-		txt_searchfield.setColumns(10);
-		
+		searchpanel.add(txt_searchfield);
+		txt_searchfield.setColumns(10);	
 		
 		spane_help.setVisible(false);
-		
+		lbl_map.setIcon(new ImageIcon("C:\\Users\\nscha\\Desktop\\Online-Unterricht\\Software\\Gruppenarbeit\\map.jpg"));
 		createEvents();
 	}
 	
@@ -356,7 +361,7 @@ public class MainUi {
 			}
 		});
 		
-		btn_help1.addActionListener(new ActionListener() {
+		btn_Funktionsweise.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});

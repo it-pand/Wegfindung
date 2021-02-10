@@ -36,13 +36,19 @@ public class AdministrationsUi {
 		frame.setVisible(true);
 		
 		btn_back = new JButton("Zur\u00FCck");
+		btn_back.setBounds(122, 76, 89, 23);
+		frame.getContentPane().add(btn_back);
+		
+		createEvents();
+	}
+	
+	public static void createEvents(){
+		
 		btn_back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AdministrationsUiController.backtomain();			
 		}
 		});
-		btn_back.setBounds(122, 76, 89, 23);
-		frame.getContentPane().add(btn_back);
 	}
 }
 
