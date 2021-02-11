@@ -35,6 +35,8 @@ import java.awt.FlowLayout;
 import javax.swing.JInternalFrame;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
+import java.awt.ComponentOrientation;
+import javax.swing.UIManager;
 
 
 public class MainUi {
@@ -52,7 +54,6 @@ public class MainUi {
 	public static JButton btn_Funktionsweise;
 	public static JButton btn_back;
 	public static JPanel helptextpanel;
-	public static JLabel lbl_helptext;
 	public static JPanel searchpanel;
 	public static JButton keypad_0;
 	public static JButton keypad_1;
@@ -68,6 +69,9 @@ public class MainUi {
 	public static JButton keypad_delete;
 	public static JButton btn_searchfunction;
 	public static JLabel lbl_map;
+	public static JButton btn_keypadback;
+	public static JTextPane txtpn_helptext;
+	
 	
 	public static String passwordinput = "";
 	
@@ -102,13 +106,13 @@ public class MainUi {
 		lbl_map.setBounds(10, 72, 907, 657);
 		
 		loginpanel = new JPanel();
-		loginpanel.setBounds(1535, 11, 359, 390);
+		loginpanel.setBounds(1535, 11, 359, 438);
 		loginpanel.setVisible(false);
 		loginpanel.setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		loginpanel.setLayout(null);
 		
 		spane_help = new JScrollPane();
-		spane_help.setBounds(1564, 412, 330, 241);
+		spane_help.setBounds(1564, 457, 330, 241);
 		spane_help.setBorder(new LineBorder(new Color(130, 135, 144), 5));
 		
 		frame.getContentPane().setLayout(null);
@@ -119,20 +123,20 @@ public class MainUi {
 		frame.getContentPane().add(loginpanel);
 		frame.getContentPane().add(spane_help);
 		
-		keypad_enter = new JButton("ENTER");
+		keypad_enter = new JButton("Eingabe");
 		keypad_enter.setActionCommand("");
 		keypad_enter.setFont(new Font("Tahoma", Font.BOLD, 14));
-		keypad_enter.setBounds(219, 289, 60, 60);
+		keypad_enter.setBounds(170, 360, 109, 60);
 		loginpanel.add(keypad_enter);
 		
-		keypad_delete = new JButton("DEL");
+		keypad_delete = new JButton("L\u00F6schen");
 		keypad_delete.setFont(new Font("Tahoma", Font.BOLD, 14));
-		keypad_delete.setBounds(79, 289, 60, 60);
+		keypad_delete.setBounds(79, 289, 130, 60);
 		loginpanel.add(keypad_delete);
 		
 		keypad_0 = new JButton("0");
 		keypad_0.setFont(new Font("Tahoma", Font.BOLD, 14));
-		keypad_0.setBounds(149, 289, 60, 60);
+		keypad_0.setBounds(219, 289, 60, 60);
 		loginpanel.add(keypad_0);
 		
 		keypad_1 = new JButton("1");
@@ -185,6 +189,11 @@ public class MainUi {
 		loginpanel.add(pwf_login);
 		pwf_login.setText("");
 		
+		btn_keypadback = new JButton("Zur\u00FCck");
+		loginpanel.add(btn_keypadback);
+		btn_keypadback.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btn_keypadback.setBounds(79, 360, 81, 60);
+		
 		helpbuttonspanel = new JPanel();
 		spane_help.setRowHeaderView(helpbuttonspanel);
 		helpbuttonspanel.setLayout(new GridLayout(0, 1, 0, 0));
@@ -202,10 +211,12 @@ public class MainUi {
 		spane_help.setViewportView(helptextpanel);
 		helptextpanel.setLayout(null);
 		
-		lbl_helptext = new JLabel("New label");
-		lbl_helptext.setBounds(10, 11, 189, 189);
-		lbl_helptext.setText("Hallo");
-		helptextpanel.add(lbl_helptext);
+		txtpn_helptext = new JTextPane();
+		txtpn_helptext.setEditable(false);
+		txtpn_helptext.setText("Lorem ipsum dolor sit amet, Dominik sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor Alex amet. Lorem ipsum dolor sit amet, consetetur sadipscing Hallo, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem Alex dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam hallo eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita Paul gubergren, no sea takimata sanctus est Lorem ipsum dolor sit Noah.");
+		txtpn_helptext.setBackground(UIManager.getColor("Button.background"));
+		txtpn_helptext.setBounds(10, 11, 189, 176);
+		helptextpanel.add(txtpn_helptext);
 		
 		searchpanel = new JPanel();
 		spane_help.setColumnHeaderView(searchpanel);
@@ -227,7 +238,7 @@ public class MainUi {
 		
 		btn_searchfunction.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String text = lbl_helptext.getText();
+				String text = txtpn_helptext.getText();
 				String search = txt_searchfield.getText();
 				
 				if(text.contains(search)) {
@@ -353,6 +364,12 @@ public class MainUi {
 			}
 		});
 		
+		btn_keypadback.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				loginpanel.setVisible(false);
+			}
+		});
 		
 		btn_back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
