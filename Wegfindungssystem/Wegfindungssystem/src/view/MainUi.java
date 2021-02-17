@@ -13,6 +13,8 @@ import controller.MainUiController;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URL;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
@@ -24,6 +26,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.GridBagLayout;
@@ -35,12 +38,9 @@ import java.awt.FlowLayout;
 import javax.swing.JInternalFrame;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
-<<<<<<< Updated upstream
 import java.awt.ComponentOrientation;
 import javax.swing.UIManager;
-=======
 import javax.swing.JScrollBar;
->>>>>>> Stashed changes
 
 
 public class MainUi {
@@ -75,6 +75,7 @@ public class MainUi {
 	public static JLabel lbl_map;
 	public static JButton btn_keypadback;
 	public static JTextPane txtpn_helptext;
+	public static JScrollPane scrollbar;
 	
 	
 	public static String passwordinput = "";
@@ -116,7 +117,7 @@ public class MainUi {
 		loginpanel.setLayout(null);
 		
 		spane_help = new JScrollPane();
-		spane_help.setBounds(1564, 457, 330, 241);
+		spane_help.setBounds(1509, 461, 330, 241);
 		spane_help.setBorder(new LineBorder(new Color(130, 135, 144), 5));
 		spane_help.createVerticalScrollBar();
 		
@@ -216,19 +217,20 @@ public class MainUi {
 		spane_help.setViewportView(helptextpanel);
 		helptextpanel.setLayout(null);
 		
-<<<<<<< Updated upstream
 		txtpn_helptext = new JTextPane();
 		txtpn_helptext.setEditable(false);
 		txtpn_helptext.setText("Lorem ipsum dolor sit amet, Dominik sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor Alex amet. Lorem ipsum dolor sit amet, consetetur sadipscing Hallo, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem Alex dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam hallo eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita Paul gubergren, no sea takimata sanctus est Lorem ipsum dolor sit Noah.");
 		txtpn_helptext.setBackground(UIManager.getColor("Button.background"));
 		txtpn_helptext.setBounds(10, 11, 189, 176);
 		helptextpanel.add(txtpn_helptext);
-=======
-		lbl_helptext = new JLabel("New label");
-		lbl_helptext.setBounds(10, 11, 189, 189);
-		lbl_helptext.setText("Hallo Hallo Hallo Hallo \n Hallo");
-		helptextpanel.add(lbl_helptext);
->>>>>>> Stashed changes
+		
+		scrollbar = new JScrollPane();
+		scrollbar.setBounds(197, 93, 2, 2);
+		scrollbar = new JScrollPane(txtpn_helptext);
+		scrollbar.setBorder(null);
+		scrollbar.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollbar.setBounds(0, 0, 182, 198);
+		helptextpanel.add(scrollbar);
 		
 		searchpanel = new JPanel();
 		spane_help.setColumnHeaderView(searchpanel);
@@ -242,7 +244,9 @@ public class MainUi {
 		txt_searchfield.setColumns(10);	
 		
 		spane_help.setVisible(false);
-		lbl_map.setIcon(new ImageIcon("C:\\Users\\nscha\\Desktop\\Online-Unterricht\\Software\\Gruppenarbeit\\map.jpg"));
+		
+		lbl_map.setIcon(new ImageIcon("src/Pictures/map.jpg"));
+		
 		createEvents();
 	}
 	
