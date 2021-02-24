@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Node<T> implements Comparable<Node> {
 
-    public static enum State { WAY, OPEN, CLOSED };
+    public static enum State { WAY, OPEN, WALL };
     
     private final T obj;
     private State state = State.WAY;

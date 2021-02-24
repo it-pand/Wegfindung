@@ -280,6 +280,7 @@ public class MainUi {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Funktioniert lel");
 				spane_help.setVisible(true);
+				
 			}
 		});
 			
