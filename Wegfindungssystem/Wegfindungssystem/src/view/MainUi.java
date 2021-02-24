@@ -245,7 +245,7 @@ public class MainUi {
 		
 		spane_help.setVisible(false);
 		
-		lbl_map.setIcon(new ImageIcon("/Pictures/map.jpg"));
+		lbl_map.setIcon(new ImageIcon("map.jpg"));
 		
 		createEvents();
 	}
