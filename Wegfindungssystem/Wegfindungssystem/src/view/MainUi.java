@@ -46,19 +46,10 @@ import javax.swing.JScrollBar;
 public class MainUi {
 	public static JFrame frame;
 	public static JPasswordField pwf_login;
-	public static JTextField txt_searchfield;
 	public static JButton btn_login;
-	public static JButton btn_help;
 	public static JButton btn_exit;
 	public static JPanel loginpanel;
 	public static JButton btn_bestaetigen;
-	public static JScrollPane spane_help;
-	public static JPanel helpbuttonspanel;
-	public static JButton btn_Symbolerklärung;
-	public static JButton btn_Funktionsweise;
-	public static JButton btn_back;
-	public static JPanel helptextpanel;
-	public static JPanel searchpanel;
 	public static JButton keypad_0;
 	public static JButton keypad_1;
 	public static JButton keypad_2;
@@ -71,11 +62,8 @@ public class MainUi {
 	public static JButton keypad_9;
 	public static JButton keypad_enter;
 	public static JButton keypad_delete;
-	public static JButton btn_searchfunction;
+	public static JButton keypad_back;
 	public static JLabel lbl_map;
-	public static JButton btn_keypadback;
-	public static JTextPane txtpn_helptext;
-	public static JScrollPane scrollbar;
 	
 	
 	public static String passwordinput = "";
@@ -97,37 +85,22 @@ public class MainUi {
 		btn_login.setMargin(new Insets(8, 14, 2, 14));
 		btn_login.setFont(new Font("Calibri", Font.BOLD, 28));
 		
-		btn_help = new JButton("Hilfe");
-		btn_help.setBounds(120, 10, 100, 50);
-		btn_help.setMargin(new Insets(10, 14, 2, 14));
-		btn_help.setFont(new Font("Calibri", Font.BOLD, 28));
-		
 		btn_exit = new JButton("Exit");
-		btn_exit.setBounds(230, 10, 100, 50);
+		btn_exit.setBounds(120, 10, 100, 50);
 		btn_exit.setMargin(new Insets(10, 14, 2, 14));
 		btn_exit.setFont(new Font("Calibri", Font.BOLD, 28));
 		
 		lbl_map = new JLabel("");
 		lbl_map.setBounds(10, 72, 907, 657);
 		
+		frame.getContentPane().setLayout(null);
+		
 		loginpanel = new JPanel();
-		loginpanel.setBounds(1535, 11, 359, 438);
+		loginpanel.setBounds(780, 320, 360, 440);
 		loginpanel.setVisible(false);
 		loginpanel.setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		loginpanel.setLayout(null);
-		
-		spane_help = new JScrollPane();
-		spane_help.setBounds(1509, 461, 330, 241);
-		spane_help.setBorder(new LineBorder(new Color(130, 135, 144), 5));
-		spane_help.createVerticalScrollBar();
-		
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(btn_login);
-		frame.getContentPane().add(btn_help);
-		frame.getContentPane().add(btn_exit);
-		frame.getContentPane().add(lbl_map);
 		frame.getContentPane().add(loginpanel);
-		frame.getContentPane().add(spane_help);
 		
 		keypad_enter = new JButton("Eingabe");
 		keypad_enter.setActionCommand("");
@@ -195,73 +168,20 @@ public class MainUi {
 		loginpanel.add(pwf_login);
 		pwf_login.setText("");
 		
-		btn_keypadback = new JButton("Zur\u00FCck");
-		loginpanel.add(btn_keypadback);
-		btn_keypadback.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btn_keypadback.setBounds(79, 360, 81, 60);
+		keypad_back = new JButton("Zur\u00FCck");
+		loginpanel.add(keypad_back);
+		keypad_back.setFont(new Font("Tahoma", Font.BOLD, 14));
+		keypad_back.setBounds(79, 360, 81, 60);
+		frame.getContentPane().add(btn_login);
+		frame.getContentPane().add(btn_exit);
+		frame.getContentPane().add(lbl_map);
 		
-		helpbuttonspanel = new JPanel();
-		spane_help.setRowHeaderView(helpbuttonspanel);
-		helpbuttonspanel.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		btn_Funktionsweise = new JButton("Funktionsweise");
-		helpbuttonspanel.add(btn_Funktionsweise);
-		
-		btn_Symbolerklärung = new JButton("Symbolerkl\u00E4rung");
-		helpbuttonspanel.add(btn_Symbolerklärung);
-		
-		btn_back = new JButton("Zur\u00FCck");		
-		helpbuttonspanel.add(btn_back);
-		
-		helptextpanel = new JPanel();
-		spane_help.setViewportView(helptextpanel);
-		helptextpanel.setLayout(null);
-		
-		txtpn_helptext = new JTextPane();
-		txtpn_helptext.setEditable(false);
-		txtpn_helptext.setText("Lorem ipsum dolor sit amet, Dominik sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor Alex amet. Lorem ipsum dolor sit amet, consetetur sadipscing Hallo, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem Alex dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam hallo eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita Paul gubergren, no sea takimata sanctus est Lorem ipsum dolor sit Noah.");
-		txtpn_helptext.setBackground(UIManager.getColor("Button.background"));
-		txtpn_helptext.setBounds(10, 11, 189, 176);
-		helptextpanel.add(txtpn_helptext);
-		
-		scrollbar = new JScrollPane();
-		scrollbar.setBounds(197, 93, 2, 2);
-		scrollbar = new JScrollPane(txtpn_helptext);
-		scrollbar.setBorder(null);
-		scrollbar.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollbar.setBounds(0, 0, 182, 198);
-		helptextpanel.add(scrollbar);
-		
-		searchpanel = new JPanel();
-		spane_help.setColumnHeaderView(searchpanel);
-		searchpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		btn_searchfunction = new JButton("Suche");
-		searchpanel.add(btn_searchfunction);
-		
-		txt_searchfield = new JTextField();
-		searchpanel.add(txt_searchfield);
-		txt_searchfield.setColumns(10);	
-		
-		spane_help.setVisible(false);
-		
-		lbl_map.setIcon(new ImageIcon("map.jpg"));
+		lbl_map.setIcon(new ImageIcon("src/map.jpg"));
 		
 		createEvents();
 	}
 	
 	public static void createEvents() {
-		
-		btn_searchfunction.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String text = txtpn_helptext.getText();
-				String search = txt_searchfield.getText();
-				
-				if(text.contains(search)) {
-					System.out.println("Geht");
-				}
-			}
-		});
 		
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -273,14 +193,6 @@ public class MainUi {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				loginpanel.setVisible(true);
-			}
-		});
-		
-		btn_help.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Funktioniert lel");
-				spane_help.setVisible(true);
-				
 			}
 		});
 			
@@ -381,22 +293,10 @@ public class MainUi {
 			}
 		});
 		
-		btn_keypadback.addActionListener(new ActionListener() {
+		keypad_back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				loginpanel.setVisible(false);
-			}
-		});
-		
-		btn_back.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				spane_help.setVisible(false);
-			}
-		});
-		
-		btn_Funktionsweise.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
