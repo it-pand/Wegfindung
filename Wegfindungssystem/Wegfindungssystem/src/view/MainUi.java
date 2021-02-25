@@ -261,7 +261,7 @@ public class MainUi {
 		
 		spane_help.setVisible(false);
 		
-		lbl_map.setIcon(new ImageIcon("src/Pictures/map.jpg"));
+		lbl_map.setIcon(new ImageIcon("map.jpg"));
 		
 		createEvents();
 	}
@@ -300,6 +300,7 @@ public class MainUi {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Funktioniert lel");
 				spane_help.setVisible(true);
+				
 			}
 		});
 			
