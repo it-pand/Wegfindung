@@ -70,40 +70,10 @@ public class AdministrationsUi extends JPanel {
             //return 0;
         });
         
-        createGrid();
-        
-        startNode = grid[5][2];
-        targetNode = grid[GRID_ROWS - 2][GRID_COLS - 2];
-        grid[1][1].setBlocked(true);
-        grid[1][2].setBlocked(true);
-        grid[1][3].setBlocked(true);
-        grid[1][4].setBlocked(true);
-        grid[1][5].setBlocked(true);
-        grid[2][1].setBlocked(true);
-        grid[3][1].setBlocked(true);
-        grid[4][1].setBlocked(true);
-        grid[5][1].setBlocked(true);
-        grid[5][2].setBlocked(true);
-        grid[5][3].setBlocked(true);
-        grid[5][4].setBlocked(true);
-        grid[5][5].setBlocked(true);
-        grid[4][5].setBlocked(true);
-        grid[2][5].setBlocked(true);
-        grid[4][8].setBlocked(true);
-    }
+
 
     private void createGrid() {
-        
-        for (int y = 0; y < GRID_ROWS; y++) {
-            for (int x = 0; x < GRID_COLS; x++) {
-                int nx = x * TILE_SIZE;
-                int ny = y * TILE_SIZE;
-                Node node = new Node(new Point(nx, ny));
-                graph.addNode(node);
-                grid[y][x] = node;
-            }
-        }
-        
+
         // link all nodes
         
         double diagonalG = Math.sqrt(TILE_SIZE * TILE_SIZE 
@@ -291,18 +261,19 @@ public class AdministrationsUi extends JPanel {
         }
     
     public AdministrationsUi() {
-              AdministrationsUi AuI = new AdministrationsUi();
-              AuI.setPreferredSize(new Dimension(1920, 1080));
-              frame = new JFrame();
-              frame.setTitle("AdministrationsUi");
-              frame.getContentPane().add(AuI);
-              frame.setResizable(false);
-              frame.pack();
-              frame.setLocationRelativeTo(null);
-              frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-              frame.setVisible(true);
-              AuI.requestFocus();
-              AuI.start();
-    }
+    	AdministrationsUi AuI = new AdministrationsUi();
+        AuI.setPreferredSize(new Dimension(1920, 1080));
+        frame = new JFrame();
+        frame.setTitle("AdministrationsUi");
+        frame.getContentPane().add(AuI);
+        frame.setResizable(false);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+		frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+        AuI.requestFocus();
+        AuI.start();
+}
     
 }
