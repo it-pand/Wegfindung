@@ -40,21 +40,8 @@ public class MainUi {
 	public static JButton keypad_delete;
 	public static JButton keypad_back;
 	public static JLabel lbl_map;
-<<<<<<< HEAD
-<<<<<<< HEAD
 	public static JButton btn_keypadback;
-	public static JTextPane txtpn_helptext;
-<<<<<<< Updated upstream
-	public static JScrollPane scrollbar;
-=======
->>>>>>> master
-=======
 	public static JButton btn_logout;
->>>>>>> master
-	
-=======
-	public static JScrollPane scrollpn_Help;
->>>>>>> Stashed changes
 	
 	public static String passwordinput = "";
 
@@ -93,24 +80,11 @@ public class MainUi {
 		loginpanel.setVisible(false);
 		loginpanel.setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		loginpanel.setLayout(null);
-<<<<<<< HEAD
-		
-		spane_help = new JScrollPane();
-<<<<<<< Updated upstream
-		spane_help.setBounds(1509, 461, 330, 241);
-=======
-		spane_help.setBounds(1545, 460, 349, 241);
->>>>>>> Stashed changes
-		spane_help.setBorder(new LineBorder(new Color(130, 135, 144), 5));
-		spane_help.createVerticalScrollBar();
 		
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(btn_login);
-		frame.getContentPane().add(btn_help);
 		frame.getContentPane().add(btn_exit);
 		frame.getContentPane().add(lbl_map);
-=======
->>>>>>> master
 		frame.getContentPane().add(loginpanel);
 		
 		keypad_enter = new JButton("Eingabe");
@@ -179,64 +153,13 @@ public class MainUi {
 		loginpanel.add(pwf_login);
 		pwf_login.setText("");
 		
-<<<<<<< HEAD
+
 		btn_keypadback = new JButton("Zur\u00FCck");
 		loginpanel.add(btn_keypadback);
 		btn_keypadback.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btn_keypadback.setBounds(79, 360, 81, 60);
 		
-		helpbuttonspanel = new JPanel();
-		spane_help.setRowHeaderView(helpbuttonspanel);
-		helpbuttonspanel.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		btn_Funktionsweise = new JButton("Funktionsweise");
-		helpbuttonspanel.add(btn_Funktionsweise);
-		
-		btn_Symbolerklärung = new JButton("Symbolerkl\u00E4rung");
-		helpbuttonspanel.add(btn_Symbolerklärung);
-		
-		btn_back = new JButton("Zur\u00FCck");		
-		helpbuttonspanel.add(btn_back);
-		
-		helptextpanel = new JPanel();
-		spane_help.setViewportView(helptextpanel);
-		helptextpanel.setLayout(null);
-		
-		txtpn_helptext = new JTextPane();
-		txtpn_helptext.setEditable(false);
-		txtpn_helptext.setText("Lorem ipsum dolor sit amet, Dominik sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor Alex amet. Lorem ipsum dolor sit amet, consetetur sadipscing Hallo, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem Alex dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam hallo eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita Paul gubergren, no sea takimata sanctus est Lorem ipsum dolor sit Noah.");
-		txtpn_helptext.setBackground(UIManager.getColor("Button.background"));
-		helptextpanel.add(txtpn_helptext);
-		
-<<<<<<< Updated upstream
-		scrollbar = new JScrollPane();
-		scrollbar.setBounds(197, 93, 2, 2);
-		scrollbar = new JScrollPane(txtpn_helptext);
-		scrollbar.setBorder(null);
-		scrollbar.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollbar.setBounds(0, 0, 182, 198);
-		helptextpanel.add(scrollbar);
-=======
-		scrollpn_Help = new JScrollPane(txtpn_helptext);
-		scrollpn_Help.setBorder(null);
-		scrollpn_Help.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollpn_Help.setBounds(0, 0, 207, 198);
-		helptextpanel.add(scrollpn_Help);
->>>>>>> Stashed changes
-		
-		searchpanel = new JPanel();
-		spane_help.setColumnHeaderView(searchpanel);
-		searchpanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		btn_searchfunction = new JButton("Suche");
-		searchpanel.add(btn_searchfunction);
-		
-		txt_searchfield = new JTextField();
-		searchpanel.add(txt_searchfield);
-		txt_searchfield.setColumns(10);	
-		
-		spane_help.setVisible(false);
-=======
+
 		keypad_back = new JButton("Zur\u00FCck");
 		loginpanel.add(keypad_back);
 		keypad_back.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -244,7 +167,7 @@ public class MainUi {
 		frame.getContentPane().add(btn_login);
 		frame.getContentPane().add(btn_exit);
 		frame.getContentPane().add(lbl_map);
->>>>>>> master
+
 		
 		lbl_map.setIcon(new ImageIcon("src/map.jpg"));
 		
@@ -259,24 +182,6 @@ public class MainUi {
 	
 	public static void createEvents() {
 		
-<<<<<<< HEAD
-		btn_searchfunction.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String text = txtpn_helptext.getText();
-				String search = txt_searchfield.getText();
-				
-				if(text.contains(search)) {
-					
-					System.out.println("Geht");
-					
-					
-					
-				}
-			}
-		});
-		
-=======
->>>>>>> master
 		btn_exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(1);
