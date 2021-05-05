@@ -1,46 +1,22 @@
 package view;
 
-import java.awt.EventQueue;
+
 
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
-
 import controller.MainUiController;
-
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.URL;
 import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import java.awt.Insets;
-import java.awt.Point;
-
 import javax.swing.JPasswordField;
-import javax.swing.JTabbedPane;
-import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
-import javax.imageio.ImageIO;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
-import javax.swing.JTextPane;
 import javax.swing.JLabel;
-import java.awt.FlowLayout;
-import javax.swing.JInternalFrame;
-import java.awt.Rectangle;
 import javax.swing.ImageIcon;
-import java.awt.ComponentOrientation;
-import javax.swing.UIManager;
-import javax.swing.JScrollBar;
+
 
 
 public class MainUi {
@@ -65,11 +41,15 @@ public class MainUi {
 	public static JButton keypad_back;
 	public static JLabel lbl_map;
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static JButton btn_keypadback;
 	public static JTextPane txtpn_helptext;
 <<<<<<< Updated upstream
 	public static JScrollPane scrollbar;
 =======
+>>>>>>> master
+=======
+	public static JButton btn_logout;
 >>>>>>> master
 	
 =======
@@ -90,19 +70,21 @@ public class MainUi {
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		
+		frame.setResizable(false);
+		frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+
 		btn_login = new JButton("Login");
-		btn_login.setBounds(10, 11, 100, 50);
+		btn_login.setBounds(10, 11, 118, 50);
 		btn_login.setMargin(new Insets(8, 14, 2, 14));
 		btn_login.setFont(new Font("Calibri", Font.BOLD, 28));
 		
 		btn_exit = new JButton("Exit");
-		btn_exit.setBounds(120, 10, 100, 50);
+		btn_exit.setBounds(144, 10, 100, 50);
 		btn_exit.setMargin(new Insets(10, 14, 2, 14));
 		btn_exit.setFont(new Font("Calibri", Font.BOLD, 28));
 		
 		lbl_map = new JLabel("");
-		lbl_map.setBounds(10, 72, 907, 657);
+		lbl_map.setBounds(10, 77, 907, 657);
 		
 		frame.getContentPane().setLayout(null);
 		
@@ -266,6 +248,12 @@ public class MainUi {
 		
 		lbl_map.setIcon(new ImageIcon("src/map.jpg"));
 		
+		btn_logout = new JButton("Logout");
+		btn_logout.setFont(new Font("Calibri", Font.BOLD, 28));
+		btn_logout.setBounds(10, 11, 118, 50);
+		btn_logout.setVisible(false);
+		frame.getContentPane().add(btn_logout);
+		
 		createEvents();
 	}
 	
@@ -403,6 +391,13 @@ public class MainUi {
 			public void actionPerformed(ActionEvent e) {
 				
 				loginpanel.setVisible(false);
+			}
+		});
+		
+		btn_logout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btn_logout.setVisible(false);
+				btn_login.setVisible(true);
 			}
 		});
 		
