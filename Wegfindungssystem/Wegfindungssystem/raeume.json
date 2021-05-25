@@ -22,5 +22,29 @@
 		"xcord" : "1",
 		"ycord" : "4"
 		}
+	},
+	{
+		"blocked":{
+		"xcord" : "1",
+		"ycord" : "5"
+		}
+	},
+	{
+		"blocked":{
+		"xcord" : "1",
+		"ycord" : "6"
+		}
+	},
+	{
+		"blocked":{
+		"xcord" : "1",
+		"ycord" : "7"
+		}
+	},
+	{
+		"blocked":{
+		"xcord" : "1",
+		"ycord" : "8"
+		}
 	}
 ]

@@ -39,7 +39,7 @@ public class AdministrationsUi extends JPanel {
     private static final int GRID_COLS = 150;
     private static final int GRID_ROWS = 100;
     
-    private Node[][] grid;
+    private static Node[][] grid;
     
     private Graph<Point> graph;
     
@@ -60,23 +60,31 @@ public class AdministrationsUi extends JPanel {
     	JSONObject raeumeObject = (JSONObject) raeume.get("blocked");
     	
     	//GET Räume xcord
-    	int xcord = (int) raeumeObject.get("xcord");
-    	System.out.println(xcord);
+    	String xcord = (String) raeumeObject.get("xcord");
+    	//System.out.println(xcord);
     	
     	//GET Räume xcord
-    	int ycord = (int) raeumeObject.get("ycord");
-    	System.out.println(ycord);
+    	String ycord = (String) raeumeObject.get("ycord");
+    	//System.out.println(ycord);
     	
+    	int intxcord = Integer.parseInt(xcord);
+    	int intycord = Integer.parseInt(ycord);
+    	
+    	System.out.println("X-Koordinate " + intxcord);
+    	System.out.println("Y-Koordinate " + intycord);
+    	
+    	grid[intxcord][intycord].setBlocked(true);
     }
     
-    public void start() {
+    @SuppressWarnings("unchecked")
+	public void start() throws org.json.simple.parser.ParseException {
         MouseHandler mouseHandler = new MouseHandler();
         addMouseListener(mouseHandler);
         addMouseMotionListener(mouseHandler);   
         
         path = new ArrayList<>();
-        grid = new Node[GRID_ROWS][GRID_COLS];
-        
+    	grid = new Node[GRID_ROWS][GRID_COLS];
+    	
         graph = new Graph<>((start, target, current) -> {
             // --- implement your heuristic here ---
             
@@ -95,6 +103,25 @@ public class AdministrationsUi extends JPanel {
         	});
         
         createGrid();
+        
+        JSONParser jsonParser = new JSONParser();
+        
+    	try(FileReader reader = new FileReader("raeume.json"))
+    		{
+    			//Read JSON file
+    			Object obj = jsonParser.parse(reader);
+    		
+    			JSONArray raeumeliste = (JSONArray) obj;
+    			System.out.println(raeumeliste);
+    		
+    			//Iterate over raeume array
+    			raeumeliste.forEach( emp -> parseRaeumeObject( (JSONObject) emp ) );
+    			
+    		} catch (FileNotFoundException e) {
+    			e.printStackTrace();
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
         
         startNode = grid[5][2];
         targetNode = grid[GRID_ROWS - 2][GRID_COLS - 2];
@@ -311,31 +338,17 @@ public class AdministrationsUi extends JPanel {
             frame.setVisible(true);
     		frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
             AuI.requestFocus();
-            AuI.start();
+            try {
+				AuI.start();
+			} catch (org.json.simple.parser.ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         	});
     	
-    		JSONParser jsonParser = new JSONParser();
-        
-        	try(FileReader reader = new FileReader("raeume.json"))
-        		{
-        			//Read JSON file
-        			Object obj = jsonParser.parse(reader);
-        		
-        			JSONArray raeumeliste = (JSONArray) obj;
-        			System.out.println(raeumeliste);
-        		
-        			//Iterate over raeume array
-        			raeumeliste.forEach( emp -> parseRaeumeObject( (JSONObject) emp ) );
-        			
-        		} catch (FileNotFoundException e) {
-        			e.printStackTrace();
-        		} catch (IOException e) {
-        			e.printStackTrace();
-        		}
         	}
     
     public AdministrationsUi() {
-    	
 }
     
 }
