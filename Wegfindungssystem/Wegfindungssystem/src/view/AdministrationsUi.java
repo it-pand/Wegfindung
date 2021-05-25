@@ -10,11 +10,21 @@ import java.awt.Point;
 import java.awt.Stroke;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import com.sun.tools.javac.parser.ReferenceParser.ParseException;
+
 import Model.Edge;
 import Model.Graph;
 import Model.Node;
@@ -23,12 +33,11 @@ import static Model.Node.State.*;
 
 public class AdministrationsUi extends JPanel {
 	
-	public static JFrame frame; 
-
-    private static final int TILE_SIZE = 20;
+	public static JFrame frame;
+	private static final int TILE_SIZE = 10;
     
-    private static final int GRID_COLS = 50;
-    private static final int GRID_ROWS = 50;
+    private static final int GRID_COLS = 150;
+    private static final int GRID_ROWS = 100;
     
     private Node[][] grid;
     
@@ -45,10 +54,25 @@ public class AdministrationsUi extends JPanel {
     private final Font smallFont = new Font("Arial", Font.BOLD, 10);
     
     
+    public static void parseRaeumeObject(JSONObject raeume)
+    {
+    	//GET Räume object within list
+    	JSONObject raeumeObject = (JSONObject) raeume.get("blocked");
+    	
+    	//GET Räume xcord
+    	int xcord = (int) raeumeObject.get("xcord");
+    	System.out.println(xcord);
+    	
+    	//GET Räume xcord
+    	int ycord = (int) raeumeObject.get("ycord");
+    	System.out.println(ycord);
+    	
+    }
+    
     public void start() {
         MouseHandler mouseHandler = new MouseHandler();
         addMouseListener(mouseHandler);
-        addMouseMotionListener(mouseHandler);
+        addMouseMotionListener(mouseHandler);   
         
         path = new ArrayList<>();
         grid = new Node[GRID_ROWS][GRID_COLS];
@@ -74,26 +98,10 @@ public class AdministrationsUi extends JPanel {
         
         startNode = grid[5][2];
         targetNode = grid[GRID_ROWS - 2][GRID_COLS - 2];
-        grid[1][1].setBlocked(true);
-        grid[1][2].setBlocked(true);
-        grid[1][3].setBlocked(true);
-        grid[1][4].setBlocked(true);
-        grid[1][5].setBlocked(true);
-        grid[2][1].setBlocked(true);
-        grid[3][1].setBlocked(true);
-        grid[4][1].setBlocked(true);
-        grid[5][1].setBlocked(true);
-        grid[5][2].setBlocked(true);
-        grid[5][3].setBlocked(true);
-        grid[5][4].setBlocked(true);
-        grid[5][5].setBlocked(true);
-        grid[4][5].setBlocked(true);
-        grid[2][5].setBlocked(true);
-        grid[4][8].setBlocked(true);
         
     };
         
-
+    
 
     private void createGrid() {
     	
@@ -288,8 +296,8 @@ public class AdministrationsUi extends JPanel {
         }
 
     }
-
-    public static void main(String[] args) {
+    @SuppressWarnings("unchecked")
+	public static void main(String[] args) throws org.json.simple.parser.ParseException {
     	SwingUtilities.invokeLater(() -> {
         	AdministrationsUi AuI = new AdministrationsUi();
             AuI.setPreferredSize(new Dimension(1920, 1080));
@@ -305,7 +313,26 @@ public class AdministrationsUi extends JPanel {
             AuI.requestFocus();
             AuI.start();
         	});
-        }
+    	
+    		JSONParser jsonParser = new JSONParser();
+        
+        	try(FileReader reader = new FileReader("raeume.json"))
+        		{
+        			//Read JSON file
+        			Object obj = jsonParser.parse(reader);
+        		
+        			JSONArray raeumeliste = (JSONArray) obj;
+        			System.out.println(raeumeliste);
+        		
+        			//Iterate over raeume array
+        			raeumeliste.forEach( emp -> parseRaeumeObject( (JSONObject) emp ) );
+        			
+        		} catch (FileNotFoundException e) {
+        			e.printStackTrace();
+        		} catch (IOException e) {
+        			e.printStackTrace();
+        		}
+        	}
     
     public AdministrationsUi() {
     	

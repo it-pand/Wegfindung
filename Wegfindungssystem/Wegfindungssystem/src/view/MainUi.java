@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
+
+import org.json.simple.parser.ParseException;
+
 import controller.MainUiController;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -199,7 +202,12 @@ public class MainUi {
 		keypad_enter.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				MainUiController.btnlogin();
+				try {
+					MainUiController.btnlogin();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				pwf_login.setText(passwordinput);
 			}
 		});

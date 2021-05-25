@@ -2,12 +2,14 @@ package controller;
 
 import javax.swing.JOptionPane;
 
+import org.json.simple.parser.ParseException;
+
 import view.AdministrationsUi;
 import view.MainUi;
 
 public class MainUiController {
 
-	public static void btnlogin() {
+	public static void btnlogin() throws ParseException {
 		String Password = String.copyValueOf(MainUi.pwf_login.getPassword());
 		MainUi.passwordinput = "";
 		
