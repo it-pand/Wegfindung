@@ -56,7 +56,7 @@ public class AdministrationsUi extends JPanel {
         graph = new Graph<>((start, target, current) -> {
             // --- implement your heuristic here ---
             
-            // heuristic = manhattan distance
+            //heuristic = manhattan distance
             //int dx = Math.abs(target.getObj().x - current.getObj().x);
             //int dy = Math.abs(target.getObj().y - current.getObj().y);
             //return dx + dy;
@@ -290,25 +290,25 @@ public class AdministrationsUi extends JPanel {
     }
 
     public static void main(String[] args) {
-    		new AdministrationsUi();
+    	SwingUtilities.invokeLater(() -> {
+        	AdministrationsUi AuI = new AdministrationsUi();
+            AuI.setPreferredSize(new Dimension(1920, 1080));
+            frame = new JFrame();
+            frame.setTitle("AdministrationsUi");
+            frame.getContentPane().add(AuI);
+            frame.setResizable(false);
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+    		frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+            AuI.requestFocus();
+            AuI.start();
+        	});
         }
     
     public AdministrationsUi() {
-    	SwingUtilities.invokeLater(() -> {
-    	AdministrationsUi AuI = new AdministrationsUi();
-        AuI.setPreferredSize(new Dimension(1920, 1080));
-        frame = new JFrame();
-        frame.setTitle("AdministrationsUi");
-        frame.getContentPane().add(AuI);
-        frame.setResizable(false);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-		frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-        AuI.requestFocus();
-        AuI.start();
-    	});
+    	
 }
     
 }

@@ -19,7 +19,7 @@ public class MainUiController {
 			
 			MainUi.pwf_login.setText("");
 			MainUi.frame.setVisible(false);
-			AdministrationsUi AuI = new AdministrationsUi();
+			AdministrationsUi.main(null);
 			break;
 			}
 		
